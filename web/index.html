@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Smart Home Dashboard</title>
+  <link rel="stylesheet" href="main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="logo">
+        <i class="fa-solid fa-microchip"></i>
+        <h2>AI Home</h2>
+      </div>
+      <nav class="menu">
+        <a href="#" class="active"><i class="fa-solid fa-house-user"></i> Tổng quan</a>
+        <a href="#"><i class="fa-solid fa-shield-halved"></i> An ninh</a>
+        <a href="#"><i class="fa-solid fa-robot"></i> Trợ lý AI</a>
+        <a href="#"><i class="fa-solid fa-gear"></i> Cài đặt</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="top-header">
+        <div>
+          <h1>Tổng quan hệ thống</h1>
+          <p class="subtitle">Trạng thái thời gian thực từ các Sensor</p>
+        </div>
+        <div class="user-profile">
+          <span><i class="fa-solid fa-circle-user"></i> Quản trị viên</span>
+        </div>
+      </header>
+
+      <section class="dashboard-section">
+        <h3 class="section-title">Thông Số Môi Trường</h3>
+        <div class="grid">
+          <div class="card">
+            <div class="icon-wrapper temp"><i class="fa-solid fa-temperature-half"></i></div>
+            <h2>Nhiệt độ</h2>
+            <p id="temperature" class="value">-- °C</p>
+          </div>
+          <div class="card">
+            <div class="icon-wrapper hum"><i class="fa-solid fa-droplet"></i></div>
+            <h2>Độ ẩm</h2>
+            <p id="humidity" class="value">-- %</p>
+          </div>
+          <div class="card">
+            <div class="icon-wrapper light-sensor"><i class="fa-solid fa-sun"></i></div>
+            <h2>Ánh sáng</h2>
+            <p id="light" class="value">-- raw</p>
+          </div>
+          <div class="card">
+            <div class="icon-wrapper rain"><i class="fa-solid fa-cloud-showers-heavy"></i></div>
+            <h2>Thời tiết</h2>
+            <p id="rain" class="value">--</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard-section">
+        <h3 class="section-title">Thiết Bị Điều Khiển (AI Auto)</h3>
+        <div class="grid">
+          <div class="card">
+            <div class="icon-wrapper door"><i class="fa-solid fa-door-closed" id="doorIcon"></i></div>
+            <h2>Cửa chính (Servo)</h2>
+            <p id="door" class="value status-safe">Đóng</p>
+          </div>
+          <div class="card">
+            <div class="icon-wrapper light-bulb"><i class="fa-solid fa-lightbulb" id="lightBulbIcon"></i></div>
+            <h2>Đèn phòng (Relay)</h2>
+            <p id="lightStatus" class="value">--</p>
+          </div>
+          <div class="card">
+            <div class="icon-wrapper stepper"><i class="fa-solid fa-shirt"></i></div>
+            <h2>Giàn phơi (Stepper)</h2>
+            <p id="clothesline" class="value status-safe">Đang phơi</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard-section disabled-section">
+        <h3 class="section-title">Cảnh Báo An Ninh (Đang cập nhật)</h3>
+        <div class="grid">
+          <div class="card disabled-card">
+            <div class="icon-wrapper gas"><i class="fa-solid fa-fire-flame-curved"></i></div>
+            <h2>Khí Gas / Khói</h2>
+            <p class="value">Chờ kết nối</p>
+          </div>
+          <div class="card disabled-card">
+            <div class="icon-wrapper pir"><i class="fa-solid fa-person-rays"></i></div>
+            <h2>Cảm biến người</h2>
+            <p class="value">Chờ kết nối</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+  
+  <script src="main.js"></script>
+</body>
+</html>
