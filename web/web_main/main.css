@@ -160,3 +160,88 @@ body {
 /* Khung chờ tính năng tương lai */
 .disabled-section { opacity: 0.6; }
 .disabled-card { background: #f8fafc; border: 1px dashed #cbd5e1; box-shadow: none; }
+
+/* Giao diện Popup Trợ Lý AI */
+.ai-popup {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 320px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  z-index: 1000;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.ai-popup-header {
+  background: var(--primary);
+  color: white;
+  padding: 15px 20px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  background: none; border: none; color: white;
+  font-size: 1.2rem; cursor: pointer; opacity: 0.8;
+}
+.close-btn:hover { opacity: 1; }
+
+.ai-popup-body {
+  padding: 20px;
+}
+
+#aiMessage {
+  margin: 0 0 20px 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-main);
+}
+
+.ai-popup-actions {
+  display: flex; gap: 10px;
+}
+
+.btn-agree, .btn-decline {
+  flex: 1; padding: 10px; border: none; border-radius: 8px;
+  font-weight: 600; cursor: pointer; transition: 0.2s;
+}
+
+/* Style riêng cho khu vực AI Analytics */
+.cloud { background: #f1f5f9; color: #64748b; }
+
+.ai-card {
+  background: linear-gradient(135deg, #e0e7ff 0%, #ede9fe 100%);
+  border: 1px solid #c7d2fe;
+}
+.ai-card h2 {
+  color: #4f46e5;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+.ai-card .value {
+  font-size: 1.8rem;
+}
+.ai-subtext {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.btn-agree { background: var(--success); color: white; }
+.btn-agree:hover { background: #059669; }
+
+.btn-decline { background: #f1f5f9; color: var(--text-muted); }
+.btn-decline:hover { background: #e2e8f0; }

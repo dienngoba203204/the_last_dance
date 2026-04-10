@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Smart Home Dashboard</title>
+  <link rel="stylesheet" href="main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="logo">
+        <i class="fa-solid fa-microchip"></i>
+        <h2>AI Home</h2>
+      </div>
+      <nav class="menu">
+        <a href="#" class="active"><i class="fa-solid fa-house-user"></i> Tổng quan</a>
+        <a href="#"><i class="fa-solid fa-brain"></i> AI Analytics</a>
+        <a href="#"><i class="fa-solid fa-shield-halved"></i> An ninh</a>
+        <a href="#"><i class="fa-solid fa-gear"></i> Cài đặt</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="top-header">
+        <div>
+          <h1>Hệ Thống AIoT Trung Tâm</h1>
+          <p class="subtitle">Dung hợp dữ liệu Local Edge & Cloud API</p>
+        </div>
+        <div class="user-profile">
+          <span><i class="fa-solid fa-circle-user"></i> Ngo Ba Dien</span>
+        </div>
+      </header>
+
+      <section class="dashboard-section">
+        <h3 class="section-title">1. Dữ Liệu Đầu Vào (Sensor + API)</h3>
+        <div class="grid">
+          <div class="card">
+            <div class="icon-wrapper temp"><i class="fa-solid fa-temperature-half"></i></div>
+            <h2>Nhiệt độ (BME280)</h2>
+            <p id="temperature" class="value">-- °C</p>
+          </div>
+          <div class="card">
+            <div class="icon-wrapper hum"><i class="fa-solid fa-droplet"></i></div>
+            <h2>Độ ẩm (BME280)</h2>
+            <p id="humidity" class="value">-- %</p>
+          </div>
+          <div class="card">
+            <div class="icon-wrapper" style="background: #e0f2fe; color: #0284c7;"><i class="fa-solid fa-gauge-high"></i></div>
+            <h2>Áp suất (BME280)</h2>
+            <p id="pressure" class="value">-- hPa</p>
+          </div>
+          <div class="card">
+            <div class="icon-wrapper light-sensor"><i class="fa-solid fa-sun"></i></div>
+            <h2>Ánh sáng (Local)</h2>
+            <p id="light" class="value">-- raw</p>
+          </div>
+          <div class="card">
+            <div class="icon-wrapper cloud"><i class="fa-solid fa-cloud"></i></div>
+            <h2>Mây che phủ (API)</h2>
+            <p id="cloudiness" class="value">-- %</p>
+          </div>
+          <div class="card">
+            <div class="icon-wrapper rain"><i class="fa-solid fa-cloud-showers-heavy"></i></div>
+            <h2>Trạng thái Mưa (Local)</h2>
+            <p id="rain" class="value">--</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard-section">
+        <h3 class="section-title" style="color: #6366f1;"><i class="fa-solid fa-brain"></i> 2. AI Suy Luận (Decision Tree)</h3>
+        <div class="grid">
+          <div class="card ai-card">
+            <h2>Dự báo Mưa (15p tới)</h2>
+            <p id="aiPredictRain" class="value">Đang phân tích...</p>
+            <p class="ai-subtext">Dựa trên Áp suất, Độ ẩm & Mây</p>
+          </div>
+          <div class="card ai-card">
+            <h2>Quyết định Chiếu sáng</h2>
+            <p id="aiPredictLight" class="value">Đang phân tích...</p>
+            <p class="ai-subtext">Dựa trên Cảm biến ánh sáng</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard-section">
+        <h3 class="section-title">3. Thiết Bị Thực Thi</h3>
+        <div class="grid">
+          <div class="card">
+            <div class="icon-wrapper door"><i class="fa-solid fa-door-closed" id="doorIcon"></i></div>
+            <h2>Cửa sổ (Servo)</h2>
+            <p id="door" class="value">Chờ AI...</p>
+          </div>
+          <div class="card">
+            <div class="icon-wrapper stepper"><i class="fa-solid fa-shirt"></i></div>
+            <h2>Giàn phơi (Stepper)</h2>
+            <p id="clothesline" class="value">Chờ AI...</p>
+          </div>
+          <div class="card">
+            <div class="icon-wrapper light-bulb"><i class="fa-solid fa-lightbulb" id="lightBulbIcon"></i></div>
+            <h2>Đèn phòng (Relay)</h2>
+            <p id="lightStatus" class="value">Chờ AI...</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="aiPopup" class="ai-popup" style="display: none;">
+    <div class="ai-popup-header">
+      <span><i class="fa-solid fa-robot"></i> Trợ Lý AI</span>
+      <button onclick="hidePopup()" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="ai-popup-body">
+      <p id="aiMessage">Đang tải thông điệp...</p>
+      <div class="ai-popup-actions">
+        <button class="btn-agree" onclick="acceptSuggestion()"><i class="fa-solid fa-check"></i> Đồng Ý</button>
+        <button class="btn-decline" onclick="hidePopup()"><i class="fa-solid fa-xmark"></i> Hủy Bỏ</button>
+      </div>
+      <div style="margin-top: 10px; text-align: center;">
+        <button class="btn-voice" onclick="startVoiceAuth()" style="background: none; border: 1px solid #cbd5e1; padding: 8px 15px; border-radius: 8px; cursor: pointer; color: #64748b; width: 100%;">
+          <i class="fa-solid fa-microphone"></i> Trả lời bằng giọng nói
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <script src="main.js"></script>
+</body>
+</html>
